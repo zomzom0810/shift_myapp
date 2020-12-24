@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
 }
    root to: 'event#index'
-   resources :shifts, except: :index
+   resources :event, except: :index
 end

@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+$("tbody").append("<%= j(render("tr", event: @event)) %>");
+<%  elsif @status == 'fail' %>
+alert('error!');
+<% end %>
+$("#new_event").hide();

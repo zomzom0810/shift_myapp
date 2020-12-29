@@ -57,3 +57,8 @@ gem 'factory_bot_rails'
 
 gem 'bootstrap', '~> 4.5.3'
 gem 'jquery-rails'
+gem 'momentjs-rails', '~> 2.20', '>= 2.20.1'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'simple_calendar', '~> 2.3'
+
+gem 'rails-i18n'

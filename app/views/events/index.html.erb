@@ -1,12 +1,27 @@
-<div class="fixed-top">
-   <nav class="navbar navbar-light bg-light">
-<%if !user_signed_in? %>
-  <li class="btn btn-outline-success"><%= link_to 'ログイン', "/users/sign_in"%></li>
-<% else %> 
-  <li class="list-unstyled"><%= "#{current_user.name}さん"%></li>
-  <li class="btn btn-sm btn-outline-secondary"><%= link_to 'ログアウト', "/users/sign_out", method: :delete%></li>
+<%# <%= render 'shared/header' %> 
+
+
+<%=link_to '追加する', new_event_path, remote: true, class: "btn btn-primary" %>
+
+<div class="modal" id="new_event" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+
+
+
+
+
+
+
+
+
+
+<%= month_calendar events: @events do |date, events| %>
+  <%= date.day %>
 <% end %>
-</nav>
- </div>
 
 
+<% @events.each do |event| %>
+    <div>
+      <%= @event.title %>
+    </div>
+<% end %>

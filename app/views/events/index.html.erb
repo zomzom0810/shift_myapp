@@ -1,27 +1,15 @@
-<%# <%= render 'shared/header' %> 
-
-
-<%=link_to '追加する', new_event_path, remote: true, class: "btn btn-primary" %>
-
-<div class="modal" id="new_event" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<%= render 'shared/header' %> 
 
 
 
 
+ <div class="modal" id="new_event" tabindex="-1" role="dialog" aria-hidden="true"></div>  <%#モーダル %>
 
+<div id="events_calendar" class="calendar">
+  
+  <%= render partial: "calendar", locals: {events: @events} %>
 
+</div>
 
+<%=link_to '＋追加する', new_event_path, remote: true, class: "btn btn-primary home-btn" %>
 
-
-
-
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
-<% end %>
-
-
-<% @events.each do |event| %>
-    <div>
-      <%= @event.title %>
-    </div>
-<% end %>

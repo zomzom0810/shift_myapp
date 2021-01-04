@@ -1,6 +1,4 @@
-<% if @status == 'success' %>
-$("tbody").append("<%= j(render("tr", event: @event)) %>");
-<%  elsif @status == 'fail' %>
-alert('error!');
-<% end %>
+$("textarea").val("");
+$("input").val("");
 $("#new_event").hide();
+$(".events").html("<%= escape_javascript(render 'events', events: @events) %>")

@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2020_12_24_141744) do
 
   create_table "events", charset: "utf8", force: :cascade do |t|
     t.string "title"
-    t.datetime "start", null: false
-    t.datetime "end", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

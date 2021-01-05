@@ -1,5 +1,5 @@
-<% events.each do |event| %>
+ <% events.each do |event| %>
     <div class="btn btn-secondary">
-      <%= event.title %>
+      <%=link_to(event.title, edit_event_path(event), remote: true)%>
     </div>
 <% end %>

@@ -2,11 +2,7 @@
   <%= date.day%>
 
   <div class="events">
-    <% events.each do |event| %>
-    <div class="btn btn-secondary">
-      <%= event.title %>
-    </div>
-<% end %>
+    <%=render "events", events: @events%>
   </div>
-
+  
 <% end %>

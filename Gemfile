@@ -51,3 +51,5 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'simple_calendar', '~> 2.3'
 
 gem 'rails-i18n'
+
+gem 'data-confirm-modal'

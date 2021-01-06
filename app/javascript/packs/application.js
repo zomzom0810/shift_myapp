@@ -5,6 +5,7 @@ import "channels"
 //= require jquery
 //= require rails-ujs
 //= require popper
+//= require data-confirm-modal
 import 'bootstrap'
 import '../stylesheets/application';
 

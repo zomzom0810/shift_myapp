@@ -53,3 +53,5 @@ gem 'simple_calendar', '~> 2.3'
 gem 'rails-i18n'
 
 gem 'data-confirm-modal'
+
+gem 'font-awesome-rails'

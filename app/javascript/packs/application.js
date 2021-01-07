@@ -1,20 +1,18 @@
 import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-//= require jquery
-//= require rails-ujs
+import jquery from 'jquery';
+window.$ = window.jquery = jquery;
 //= require popper
-//= require data-confirm-modal
-import 'bootstrap'
+import 'bootstrap';
 import '../stylesheets/application';
+//= require data-confirm-modal
 
 
 require("../test")
 
-window.jQuery = window.$ = require('jquery')
+
 
 Rails.start()
-// Turbolinks.start()
 ActiveStorage.start()
 

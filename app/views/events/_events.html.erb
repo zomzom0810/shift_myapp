@@ -1,15 +1,23 @@
 
+<% events.each do |event| %>
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-     <% events.each do |event| %>
-    <div class="btn btn-secondary">
-      <%=link_to(event.title, edit_event_path(event), class: "dropdown-item", remote: true)%>
-      <%=link_to("削除", event_path(event), method: :delete, class: "dropdown-item")%>
+     
+    <div>
+      <%=link_to(event.title, edit_event_path(event), class: "dropdown-item", id: "event", remote: true)%>
+      <%=link_to event_path(event), method: :delete,
+      data:
+  { confirm: '削除しますか？',
+    remote: :true,
+    cancel: 'やめる',
+    commit: '削除'}, title: '削除の確認',
+      class: "btn btn-danger dropdown-item" do%>
+      削除
+      <% end %>
     </div>
-  <% end %>
-  
   </div>
 </div>
+<% end %>

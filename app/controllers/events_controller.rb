@@ -1,13 +1,10 @@
 class EventsController < ApplicationController
   def index
     @events = Event.includes(:user)
-  end
-  
-  def new
     @event = Event.new
   end
-
-  def create
+  
+ def create
     event = Event.create!(event_params)
     @events = Event.includes(:user)
   end

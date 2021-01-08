@@ -1,0 +1,22 @@
+
+<% events.each do |event| %>
+<div class="dropdown ">
+  <button class="btn dropdown-toggle d-flex" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+     
+    <div>
+      <%=link_to(event.title, edit_event_path(event), class: "dropdown-item", id: 'event-#{ event.id }', remote: true)%>
+      <%=link_to event_path(event), method: :delete,
+      data:
+  { confirm: '削除しますか？',
+    remote: :true,
+    }, title: '削除の確認',
+      class: "btn btn-danger dropdown-item" do%>
+      削除
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

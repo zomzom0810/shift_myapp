@@ -6,6 +6,7 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable,
   :authentication_keys => [:user_name]
 
+  has_many :events
 
 with_options presence: true do
 validates :user_name, uniqueness: true, format: {with: /\A[a-z0-9]+\z/ }  #半角アルファベット（小文字・数値）
@@ -28,3 +29,4 @@ false
 end
 #  emailを不使用に
 end
+

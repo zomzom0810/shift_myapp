@@ -1,12 +1,27 @@
-<div class="fixed-top">
-   <nav class="navbar navbar-light bg-light">
-<%if !user_signed_in? %>
-  <li class="btn btn-outline-success"><%= link_to 'ログイン', "/users/sign_in"%></li>
-<% else %> 
-  <li class="list-unstyled"><%= "#{current_user.name}さん"%></li>
-  <li class="btn btn-sm btn-outline-secondary"><%= link_to 'ログアウト', "/users/sign_out", method: :delete%></li>
-<% end %>
-</nav>
- </div>
+<%= render 'shared/header' %> 
 
 
+
+
+  
+<div id="events_calendar" class="calendar">
+  
+  <%= render partial: "calendar", locals: {events: @events} %>
+
+</div>
+
+
+
+<button type="button" class="btn btn-primary ml-4" data-toggle="modal" data-target="#new_event">
+  ＋追加する
+</button>
+
+
+<div class="modal fade" id="new_event" tabindex="-1" role="dialog"aria-hidden="true">
+   <%= render partial: "form", locals: {events: @events} %>
+</div>
+
+
+
+
+ <%= render 'shared/footer' %>  

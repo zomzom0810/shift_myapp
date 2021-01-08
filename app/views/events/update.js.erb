@@ -1,0 +1,4 @@
+$("textarea").val("");
+$("input").val("");
+$("#new_event").modal('hide')
+$(".events").html("<%= j(render 'events', events: @events) %>")

@@ -1,7 +1,7 @@
 
 <% events.each do |event| %>
-<div class="dropdown">
-  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="dropdown ">
+  <button class="btn dropdown-toggle d-flex" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -12,8 +12,7 @@
       data:
   { confirm: '削除しますか？',
     remote: :true,
-    cancel: 'やめる',
-    commit: '削除'}, title: '削除の確認',
+    }, title: '削除の確認',
       class: "btn btn-danger dropdown-item" do%>
       削除
       <% end %>

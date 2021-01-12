@@ -7,7 +7,11 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
      
     <div>
-      <%=link_to(event.title, edit_event_path(event), class: "dropdown-item", id: 'event-#{ event.id }', remote: true)%>
+      <%if event.title.blank? %>
+        <%=link_to("予定", edit_event_path(event), class: "dropdown-item", id: 'event-#{ event.id }', remote: true)%>
+      <% else %> 
+        <%=link_to(event.title, edit_event_path(event), class: "dropdown-item", id: 'event-#{ event.id }', remote: true)%>
+      <% end %>  
       <%=link_to event_path(event), method: :delete,
       data:
      { confirm: '削除しますか？',
@@ -16,6 +20,10 @@
         class: "btn btn-danger dropdown-item" do%>
         削除
        <% end %>
+       <div class= "dropdown-item">
+         <%= event.start_time.strftime('%H:%M')%>~<%= event.end_time.strftime('%H:%M')%>
+         
+       </div> 
     </div>
   </div>
 </div>

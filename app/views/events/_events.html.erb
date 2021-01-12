@@ -1,12 +1,12 @@
-
+<%if current_user %>
 <% events.each do |event| %>
-<div class="dropdown ">
-  <button class="btn dropdown-toggle d-flex" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="dropdown ">
+    <button class="btn dropdown-toggle d-flex" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     
-  </button>
+    </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
      
-    <div>
+  <div>
       <%if event.title.blank? %>
         <%=link_to("予定", edit_event_path(event), class: "dropdown-item", id: 'event-#{ event.id }', remote: true)%>
       <% else %> 
@@ -22,9 +22,13 @@
        <% end %>
        <div class= "dropdown-item">
          <%= event.start_time.strftime('%H:%M')%>~<%= event.end_time.strftime('%H:%M')%>
-         
-       </div> 
+      </div>
+
+      <div class= "dropdown-item">
+         <%=  event.end_time.strftime('%H:%M').to_i - event.start_time.strftime('%H:%M').to_i %>
+      </div> 
     </div>
   </div>
-</div>
+  </div>
+<% end %>
 <% end %>

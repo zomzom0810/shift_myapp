@@ -15,4 +15,9 @@ class Event < ApplicationRecord
   def start_end_date_check
     errors.add(:end_date, 'の入力が正しくありません') if end_date > start_date
   end
+
+  def start_end_time
+    self.end_time&.strftime('%H:%M').to_i - self.start_time&.strftime('%H:%M').to_i
+  end
 end
+

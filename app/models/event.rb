@@ -19,5 +19,10 @@ class Event < ApplicationRecord
   def start_end_time
     self.end_time&.strftime('%H:%M').to_i - self.start_time&.strftime('%H:%M').to_i
   end
+
+  def start_end_min
+    (self.end_time&.strftime('%M').to_i - self.start_time&.strftime('%M').to_i) / 60.to_f
+  end
+
 end
 

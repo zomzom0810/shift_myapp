@@ -25,7 +25,7 @@
       </div>
 
       <div class= "dropdown-item">
-         <%= current_user.hourly_wage.to_i %>
+         給料 <%= (((event.end_time&.strftime('%H').to_i - event.start_time&.strftime('%H').to_i) +((event.end_time&.strftime('%M').to_i - event.start_time&.strftime('%M').to_i) / 60.to_f)) * current_user.hourly_wage.to_i).floor %>円
       </div>
       
     </div>

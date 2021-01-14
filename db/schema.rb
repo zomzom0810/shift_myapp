@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_24_141744) do
+ActiveRecord::Schema.define(version: 2021_01_12_052719) do
 
   create_table "events", charset: "utf8", force: :cascade do |t|
     t.string "title"
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_12_24_141744) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "hourly_wage"
+
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

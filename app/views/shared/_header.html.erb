@@ -1,8 +1,8 @@
-<nav class="sticky-top navbar navbar-light bg-light">
+<nav class="fixed-top sticky-top navbar navbar-light bg-light">
   <%if !user_signed_in? %>
     <li class="btn btn-outline-success"><%= link_to 'ログイン', "/users/sign_in"%></li>
   <% else %> 
-    <li class="list-unstyled"><%= "#{current_user.name}さん"%></li>
-    <li class="btn btn-sm btn-outline-secondary"><%= link_to 'ログアウト', "/users/sign_out", method: :delete%></li>
+    <li class="list-unstyled"><%= link_to "#{current_user.name}さん", root_path, class: "text-dark"%></li>
+    <li class="btn btn-sm btn-outline-secondary"><%= link_to 'ログアウト', "/users/sign_out", class: "text-success", method: :delete%></li>
   <% end %>
 </nav>

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_052719) do
     t.time "end_time", null: false
     t.date "start_date", null: false
     t.date "end_date", null: false
+
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_052719) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "hourly_wage"
+
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

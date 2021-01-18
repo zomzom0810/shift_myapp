@@ -1,22 +1,68 @@
-<%= render 'shared/header' %> 
+<%= render 'shared/header' %>
 
-  
-<div id="events_calendar" class="calendar">
-  
-  <%= render partial: "calendar", locals: {events: @events} %>
 
+<%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @events) do |date, events| %>
+<%= date.day %>
+
+<div class='events'>
+  <% events.each do |event| %>
+  <div class="dropdown">
+    <button class="btn dropdown-toggle d-flex" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+
+      <div>
+        <%if event.title.blank? %>
+        <%=link_to("予定", edit_event_path(event), class: "dropdown-item", remote: true)%>
+        <% else %>
+        <%=link_to(event.title, edit_event_path(event), class: "dropdown-item", remote: true)%>
+        <% end %>
+        <%=link_to event_path(event), method: :delete,
+      data:
+     { confirm: '削除しますか？',
+      local: true,
+      }, title: '削除の確認',
+        class: "btn btn-danger dropdown-item" do%>
+        削除
+
+        <% end %>
+        <div class="dropdown-item">
+          <%= event.start_time.strftime('%H:%M')%>~<%= event.end_time.strftime('%H:%M')%>
+        </div>
+
+        <div class="dropdown-item">
+          給料
+          <%= (((event.end_time.strftime('%H').to_i - event.start_time.strftime('%H').to_i) +((event.end_time.strftime('%M').to_i - event.start_time.strftime('%M').to_i) / 60.to_f)) * current_user.hourly_wage.to_i).floor %>円
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>
+
+<% end %>
+
+
+
+
+
+
 
 <button type="button" class="btn btn-primary ml-4" data-toggle="modal" data-target="#new_event">
   ＋追加する
 </button>
 
 
-<div class="modal fade" id="new_event" tabindex="-1" role="dialog"aria-hidden="true">
-   <%= render partial: "form", locals: {events: @events} %>
+<div class="modal fade" id="new_event" tabindex="-1" role="dialog" aria-hidden="true">
+  <%= render partial: "form", locals: {events: @events} %>
 </div>
 
 
 
 
- <%= render 'shared/footer' %> 
+<%= render 'shared/footer' %>

@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def create
     event = Event.create!(event_params)
     @events = Event.includes(:user)
+    redirect_to root_path
   end
 
   def edit
@@ -18,17 +19,19 @@ class EventsController < ApplicationController
   def update
     event = Event.update(event_params)
     @events = Event.includes(:user)
+    redirect_to root_path
   end
 
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
+    redirect_to root_path
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:title, :start_time, :end_time, :start_date, :end_date).merge(user_id: current_user.id )
+    params.require(:event).permit(:title, :start_time, :end_time).merge(user_id: current_user.id )
 
   end
 end

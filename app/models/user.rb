@@ -5,6 +5,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:user_name]
+         
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+       params.delete(:password)
+       params.delete(:password_confirmation)
+    end
+       result = update_attributes(params, *options)
+       clean_up_passwords
+       result
+    end
+
 
   has_many :events
 
@@ -14,6 +27,8 @@ class User < ApplicationRecord
     validates :name, uniqueness: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } # 日本語のみ
     validates :name_kana, format: { with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/ } # カタカナのみ
   end
+
+
 
   #  emailを不使用に
   def email_required?

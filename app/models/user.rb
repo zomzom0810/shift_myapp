@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:user_name]
          
-  def update_without_current_password(params, *options)
+  def update_without_current_password(params, *options)　#パスワードをなしでeditページ更新
     params.delete(:current_password)
 
     if params[:password].blank? && params[:password_confirmation].blank?
@@ -16,7 +16,7 @@ class User < ApplicationRecord
        result = update_attributes(params, *options)
        clean_up_passwords
        result
-    end
+  end                                                   #パスワードをなしでeditページ更新
 
 
   has_many :events

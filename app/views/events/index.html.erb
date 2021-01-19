@@ -47,20 +47,38 @@
 
 <% end %>
 
-
-
-
-
-
-
 <button type="button" class="btn btn-primary ml-4" data-toggle="modal" data-target="#new_event">
   ＋追加する
 </button>
 
 
+
+<div class="panel-group text-center">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse2" class="text-dark">今後のシフト⬇️</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <ul class="list-group">
+        <% @events.each do |event| %>
+        <%if event.start_time > Time.current %>
+        <li class="list-group-item">
+          <%= event.start_time.strftime('%m月%d日 %a %H:%M')%>~<%= event.end_time.strftime('%H:%M')%>
+        </li>
+        <%end%>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="new_event" tabindex="-1" role="dialog" aria-hidden="true">
   <%= render partial: "form", locals: {events: @events} %>
 </div>
+
+
 
 
 

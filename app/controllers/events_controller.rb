@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.includes(:user)
+    @events = Event.includes(:user).order(start_time: "ASC")
     @event = Event.new
     @user = User.find_by(hourly_wage: params[:hourly_wage])
     @time = @event.start_end_time

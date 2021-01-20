@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'events/index'
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
@@ -7,4 +6,5 @@ Rails.application.routes.draw do
 }
    root to: 'events#index'
    resources :events, except: :index
+   resources :users, only:[:show]
 end

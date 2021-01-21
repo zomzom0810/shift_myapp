@@ -1,5 +1,20 @@
 <%= render 'shared/header' %>
 
-<p4>給料の計算</p4>
+<p3 calss="text-center">給料の計算</p3><br>
 
+<% @sum = 0 %>
+<% @events_by_month.each do |month_names, event| %>
+<%= month_names %>
+<ul class="list-group">
+    <% event.each do |event| %>
+    <li class="list-group-item list-group-item-action">
+        <%= sub_total = (((event.end_time.strftime('%H').to_i - event.start_time.strftime('%H').to_i) + ((event.end_time.strftime('%M').to_i - event.start_time.strftime('%M').to_i) / 60.to_f)) * current_user.hourly_wage.to_i).floor %>円
+    </li>
+    <% @sum += sub_total %>
+    <% end %>
+</ul>
+<div class="col-12 clearfix pt-2">
+    <div class="float-right"><%= month_names %>の予想給与<%= @sum %>円</div>
+</div>
+<% end %>
 <%= render 'shared/footer' %>

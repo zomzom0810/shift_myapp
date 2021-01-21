@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+
+  has_many :events
   belongs_to_active_hash :position
 
   devise :database_authenticatable, :registerable,
@@ -17,9 +19,6 @@ class User < ApplicationRecord
        clean_up_passwords
        result
   end                                                   #パスワードをなしでeditページ更新
-
-
-  has_many :events
 
   with_options presence: true do
     validates :user_name, uniqueness: true, format: { with: /\A[a-z0-9]+\z/ }  # 半角アルファベット（小文字・数値）

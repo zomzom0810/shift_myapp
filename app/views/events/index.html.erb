@@ -64,7 +64,7 @@
     <div id="collapse2" class="panel-collapse collapse">
       <ul class="list-group">
         <% @events.each do |event| %>
-        <%if event.start_time > Time.current %>
+        <%if event.end_time > Time.current %>
         <li class="list-group-item">
           <%= event.start_time.strftime('%m月%d日 %a %H:%M')%>~<%= event.end_time.strftime('%H:%M')%>
         </li>

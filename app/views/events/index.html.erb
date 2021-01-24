@@ -4,16 +4,14 @@
 <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @events) do |date, events| %>
 <%= date.day %>
 
+
 <div class='d-flex pl-1'>
   <% events.each do |event| %>
   <div class="dropdown">
     <button class="btn btn-warning rounded-circle p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false" style="width:0.7rem;height:0.7rem;">
-
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-
-
       <div>
         <%if event.title.blank? %>
         <%=link_to("予定", edit_event_path(event), class: "dropdown-item", remote: true)%>
@@ -44,8 +42,6 @@
   </div>
   <% end %>
 </div>
-
-
 <% end %>
 <div class="border-top" style="padding-top:10px;"></div>
 <button type="button" class="btn btn-primary rounded-pill ml-4" data-toggle="modal" data-target="#new_event">
@@ -74,6 +70,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="modal fade" id="new_event" tabindex="-1" role="dialog" aria-hidden="true">
   <%= render partial: "form", locals: {events: @events} %>

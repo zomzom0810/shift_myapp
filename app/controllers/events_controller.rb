@@ -3,13 +3,13 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :destroy]
 
   def index
-    @events = Event.includes(:user).order(start_time: "ASC")
+    @events = current_user.events.order(start_time: "ASC")
     @event = Event.new
     @user = User.find_by(hourly_wage: params[:hourly_wage])
   end
 
   def create
-    @events = Event.includes(:user)
+    @events = current_user.events.order(start_time: "ASC")
     @event = Event.new(event_params)
     if @event.save
       flash[:success] = "シフトを登録しました。"
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 
   def update
     if event = Event.update(event_params)
-      flash[:success] = "シフトを編集しました。"
+      flash[:success] = "シフトを編集しました"
       redirect_to root_path
     else
       flash.now[:danger] = "編集に失敗しました。"

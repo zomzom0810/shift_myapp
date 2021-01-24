@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    if event = Event.update(event_params)
+    if @event.update(event_params)
       flash[:success] = "シフトを編集しました"
       redirect_to root_path
     else

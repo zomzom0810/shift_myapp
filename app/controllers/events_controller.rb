@@ -1,30 +1,40 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: [:edit, :update, :destroy]
+
   def index
-    @events = Event.includes(:user)
+    @events = Event.includes(:user).order(start_time: "ASC")
     @event = Event.new
     @user = User.find_by(hourly_wage: params[:hourly_wage])
-    @time = @event.start_end_time
   end
 
   def create
-    event = Event.create!(event_params)
     @events = Event.includes(:user)
-    redirect_to root_path
+    @event = Event.new(event_params)
+    if @event.save
+      flash[:success] = "シフトを登録しました。"
+      redirect_to root_path
+    else
+      flash.now[:danger] = "登録に失敗しました。"
+      render :index
+    end
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    event = Event.update(event_params)
-    @events = Event.includes(:user)
-    redirect_to root_path
+    if event = Event.update(event_params)
+      flash[:success] = "シフトを編集しました。"
+      redirect_to root_path
+    else
+      flash.now[:danger] = "編集に失敗しました。"
+      render :index
+    end
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
+    flash[:danger] = "シフトを削除しました。"
     redirect_to root_path
   end
 
@@ -32,6 +42,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :start_time, :end_time).merge(user_id: current_user.id )
+  end
 
+  def set_event
+    @event = Event.find(params[:id])
   end
 end

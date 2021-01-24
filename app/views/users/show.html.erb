@@ -1,0 +1,24 @@
+<%= render 'shared/header' %>
+
+
+
+<div class="mt-3">
+    <% @events_by_month.each do |month_names, event| %>
+    <%= month_names %>
+    <ul class="list-group">
+        <% @sum = 0 %>
+        <% event.each do |event| %>
+        <li class="list-group-item list-group-item-action">
+            <%= event.start_time.strftime('%m月%d日 %H:%M')%>~<%= event.end_time.strftime('%H:%M')%>
+            <%= sub_total = (((event.end_time.strftime('%H').to_i - event.start_time.strftime('%H').to_i) + ((event.end_time.strftime('%M').to_i - event.start_time.strftime('%M').to_i) / 60.to_f)) * current_user.hourly_wage.to_i).floor %>円
+        </li>
+        <% @sum += sub_total %>
+        <% end %>
+    </ul>
+    <div class="col-12 clearfix pt-2">
+        <div class="float-right">予想給与 <span class="h4"><%= @sum %>円</span>
+        </div>
+    </div>
+    <% end %>
+</div>
+<%= render 'shared/footer' %>

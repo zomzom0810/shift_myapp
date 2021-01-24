@@ -20,5 +20,7 @@ class Event < ApplicationRecord
     (self.end_time&.strftime('%M').to_i - self.start_time&.strftime('%M').to_i) / 60.to_f
   end
 
+
+
 end
 

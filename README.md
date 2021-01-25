@@ -3,6 +3,8 @@ https://shift-myapp.herokuapp.com/<br>
 テストユーザー<br>
 ID: abcd<br>
 PASSWORD: testtest<br>
+## 概要
+アルバイトのシフトを個人管理するアプリ
 ## 機能一覧
 ・ユーザー新規登録機能<br>
 ・ログイン機能<br>
@@ -11,14 +13,10 @@ PASSWORD: testtest<br>
 ・シフト編集機能<br>
 ・シフト削除機能<br>
 ・月ごとの給与表示<br>
-## 概要
 
-## 使用言語
-Ruby| JavaScript| HTML| CSS 
-## フレームワーク
-Ruby on Rails
-## SQL
-MySQL
+## 使用技術一覧
+Ruby| JavaScript| HTML| CSS | Docker | Ruby on Rails | MySQL
+
 ## テーブル設計
 
 ## users テーブル

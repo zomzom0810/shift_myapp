@@ -2,7 +2,13 @@
 https://shift-myapp.herokuapp.com/
 テストユーザー id: abcd password: testtest
 ## 機能一覧
-
+・ユーザー新規登録機能
+・ログイン機能
+・ログアウト機能
+・シフト登録機能
+・シフト編集機能
+・シフト削除機能
+・月ごとの給与表示
 ## 概要
 
 ## 使用言語

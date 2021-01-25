@@ -1,4 +1,13 @@
+# URL 
+https://shift-myapp.herokuapp.com/
+# 機能一覧
 
+# 使用言語
+Ruby|JavaScript|HTML|CSS 
+# フレームワーク
+RUby on Rails
+# SQL
+MySQL
 # テーブル設計
 
 ## users テーブル
@@ -20,9 +29,9 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | title       | string     |                                |
-| start       | datetime   | null: false                    |
-| end         | datetime   | null: false                    |
-| user_id     | references | null: false                    |
+| start_time  | datetime   | null: false                    |
+| end_time    | datetime   | null: false                    |
+| user_id     | references |                                |
 
 ### Association
 - belongs_to : user 

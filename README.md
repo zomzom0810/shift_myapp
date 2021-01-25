@@ -1,14 +1,17 @@
-# URL 
+## URL 
 https://shift-myapp.herokuapp.com/
-# 機能一覧
+テストユーザー id: abcd password: testtest
+## 機能一覧
 
-# 使用言語
-Ruby|JavaScript|HTML|CSS 
-# フレームワーク
-RUby on Rails
-# SQL
+## 概要
+
+## 使用言語
+Ruby| JavaScript| HTML| CSS 
+## フレームワーク
+Ruby on Rails
+## SQL
 MySQL
-# テーブル設計
+## テーブル設計
 
 ## users テーブル
 

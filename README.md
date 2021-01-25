@@ -1,7 +1,8 @@
 ## URL 
 https://shift-myapp.herokuapp.com/<br>
-テストユーザー id: abcd<br>
-password: testtest<br>
+テストユーザー<br>
+ID: abcd<br>
+PASSWORD: testtest<br>
 ## 機能一覧
 ・ユーザー新規登録機能<br>
 ・ログイン機能<br>
